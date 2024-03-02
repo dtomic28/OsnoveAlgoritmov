@@ -39,7 +39,7 @@ void quickSort(int *arr, int bottomIndex, int topIndex) {
 bool checkIfSorted(int *arr, int bottomIndex, int topIndex) {
     for(int i = bottomIndex; i<topIndex; i++){
         if(arr[i+1] < arr[i]){
-            std::cout << "Error at index" << i << std::endl;
+            std::cout << "Error at index: " << i << std::endl;
             return false;
         }
     }
