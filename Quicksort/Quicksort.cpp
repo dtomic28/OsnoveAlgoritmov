@@ -3,7 +3,7 @@
 //
 
 #include "Quicksort.h"
-#include <bits/stdc++.h>
+#include <iostream>
 
 int divide(int *arr, int bottomIndex, int topIndex) {
     int left = bottomIndex;
