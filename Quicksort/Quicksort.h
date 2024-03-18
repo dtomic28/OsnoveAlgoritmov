@@ -8,5 +8,5 @@
 int divide(int arr[], int bottomIndex, int topIndex);
 void quickSort(int arr[], int bottomIndex, int topIndex);
 bool checkIfSorted(int arr[], int bottomIndex, int topIndex);
-
+void bubbleSort(int* arr, int size);
 #endif //OSNOVEALGORITMOV_QUICKSORT_H

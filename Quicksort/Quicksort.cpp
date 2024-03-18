@@ -4,6 +4,7 @@
 
 #include "Quicksort.h"
 #include <iostream>
+#include <cmath>
 
 int divide(int *arr, int bottomIndex, int topIndex) {
     int left = bottomIndex;
