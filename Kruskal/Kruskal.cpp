@@ -40,7 +40,6 @@ void Kruskal::initiateFromFile(unsigned int size, std::ifstream &inputFile) {
             connections.emplace_back(p-1,q-1,price);
         }
     }
-
 }
 
 void Kruskal::printMatrix() {
