@@ -6,7 +6,8 @@
 
 using namespace std;
 
-void printMenu() {
+void printMenu()
+{
     cout << "Kruskalov algoritem - izbira" << endl;
     cout << endl;
     cout << "1 Preberi graf iz datoteke" << endl;
@@ -18,17 +19,21 @@ void printMenu() {
     cout << "Vasa izbira: ";
 }
 
-int main(){
+int main()
+{
     int size, connectionSize, izbira;
     bool running = true;
 
-    do {
+    do
+    {
         printMenu();
 
         cin >> izbira;
 
-        switch (izbira) {
-            case 1: {
+        switch (izbira)
+        {
+            case 1:
+            {
                 ifstream inputFile("../Kruskal/graf2.txt");
                 inputFile >> size;
                 inputFile >> connectionSize;
@@ -39,11 +44,13 @@ int main(){
                 inputFile.close();
                 break;
             }
-            case 2: {
+            case 2:
+            {
                 cout << "Vnesite št. povezav";
                 cin >> size;
 
-                if(size > 1500){
+                if (size > 1500)
+                {
                     cout << "Vnesite manj kot 5000 povezav" << endl;
                     break;
                 }
@@ -52,19 +59,23 @@ int main(){
                 Kruskal::initiateFromSize(size);
                 break;
             }
-            case 3: {
+            case 3:
+            {
                 Kruskal::run();
                 break;
             }
-            case 4: {
+            case 4:
+            {
                 Kruskal::printResult();
                 break;
             }
-            case 5: {
+            case 5:
+            {
                 running = false;
                 break;
             }
-            default: {
+            default:
+            {
                 cout << "Napacna izbira, poskusite ponovno" << endl;
                 break;
             }

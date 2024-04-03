@@ -14,35 +14,44 @@ random_device rd;
 mt19937 rng(rd());
 std::uniform_int_distribution<int> uni(-500000, 500000);
 
-void printArray(int *arr, int size) {
-    for (int i = 0; i < size; i++) {
+void printArray(int* arr, int size)
+{
+    for (int i = 0; i < size; i++)
+    {
         std::cout << arr[i] << " ";
     }
     std::cout << std::endl;
 }
 
-void generateRandomSequence(vector<int> &arr, unsigned int numOfElements){
+void generateRandomSequence(vector<int>& arr, unsigned int numOfElements)
+{
     arr.clear();
-    for(int i = 0; i<numOfElements; i++){
+    for (int i = 0; i < numOfElements; i++)
+    {
         arr.push_back(uni(rng));
     }
 }
 
-void generateRisingSequence(vector<int> &arr, unsigned int numOfElements){
+void generateRisingSequence(vector<int>& arr, unsigned int numOfElements)
+{
     arr.clear();
-    for(int i = 0; i<numOfElements; i++){
+    for (int i = 0; i < numOfElements; i++)
+    {
         arr.push_back(i);
     }
 }
 
-void generateFallingSequence(vector<int> &arr, unsigned int numOfElements){
+void generateFallingSequence(vector<int>& arr, unsigned int numOfElements)
+{
     arr.clear();
-    for(int i = numOfElements; i>0; i--){
+    for (int i = numOfElements; i > 0; i--)
+    {
         arr.push_back(i);
     }
 }
 
-void printMenu(){
+void printMenu()
+{
     cout << "Hitro uredi - izbira" << endl;
     cout << endl;
     cout << "1 Generiraj nakljucno zaporedje" << endl;
@@ -55,8 +64,8 @@ void printMenu(){
     cout << "Vasa izbira: " << endl;
 }
 
-
-int main(){
+int main()
+{
     clock_t start, finish;
     double duration;
     int izbira, numOfElements;
@@ -64,63 +73,72 @@ int main(){
     vector<int> arr = {0};
     int* arrPtr = &arr[0];
 
-    do{
+    do
+    {
         printMenu();
 
         cin >> izbira;
 
-        switch (izbira) {
-            case 6:{
+        switch (izbira)
+        {
+            case 6:
+            {
                 running = false;
                 break;
             }
-            case 1:{
+            case 1:
+            {
                 cout << "Vnesite st elementov: ";
                 cin >> numOfElements;
 
                 generateRandomSequence(arr, numOfElements);
                 break;
             }
-            case 2:{
+            case 2:
+            {
                 cout << "Vnesite st elementov: ";
                 cin >> numOfElements;
 
                 generateRisingSequence(arr, numOfElements);
                 break;
             }
-            case 3:{
+            case 3:
+            {
                 cout << "Vnesite st elementov: ";
                 cin >> numOfElements;
 
                 generateFallingSequence(arr, numOfElements);
                 break;
             }
-            case 4:{
+            case 4:
+            {
                 printArray(&arr[0], arr.size());
                 break;
             }
-            case 5:{
-                if(!arr.empty()){
+            case 5:
+            {
+                if (!arr.empty())
+                {
                     start = clock();
                     quickSort(&arr[0], 0, arr.size());
                     finish = clock();
-                    duration = (double)(finish-start)/CLOCKS_PER_SEC;
-                    cout << "Cas izvajanja: " << duration << "s"<< endl;
+                    duration = (double) (finish - start) / CLOCKS_PER_SEC;
+                    cout << "Cas izvajanja: " << duration << "s" << endl;
                     cout << "Ali je pravilen sort?: " << (checkIfSorted(&arr[0], 0, arr.size()) ? "Pravilen" : "Nepravilen") << endl;
-                }else{
-                    cout << "Prazen array. Generirajte stevila!"<<endl;
+                }
+                else
+                {
+                    cout << "Prazen array. Generirajte stevila!" << endl;
                 }
                 break;
             }
-            default:{
-                cout << "Naredili ste napako, poskusite ponovno"<<endl;
+            default:
+            {
+                cout << "Naredili ste napako, poskusite ponovno" << endl;
                 break;
             }
-
         }
-    }while(running);
+    } while (running);
 
     return 0;
 }
-
-

@@ -12,9 +12,16 @@
 #include <stack>
 #include <vector>
 
-struct Node {
+struct Node
+{
     Node(int previous, int length, int status, int index, std::string ime)
-            : previous(previous), length(length), status(status), index(index), name(std::move(ime)) {}
+        : previous(previous)
+        , length(length)
+        , status(status)
+        , index(index)
+        , name(std::move(ime))
+    {
+    }
 
     int previous;
     int length;
@@ -22,19 +29,19 @@ struct Node {
     int index;
     std::string name;
 
-    std::string toString() const {
-        return this->name + " - " + "Index: " + std::to_string(this->index) + ", Status: " +
-               std::to_string(this->status) + ", Previous: " + std::to_string(this->previous) +
-               ", length from node s: " + std::to_string(this->length);
+    std::string toString() const
+    {
+        return this->name + " - " + "Index: " + std::to_string(this->index) + ", Status: " + std::to_string(this->status) +
+               ", Previous: " + std::to_string(this->previous) + ", length from node s: " + std::to_string(this->length);
     }
 };
 
-bool operator==(const Node &n1, const Node &n2);
+bool operator==(const Node& n1, const Node& n2);
 
-void dfs(int **matrix, int size, std::vector<Node> &nodes, Node &start);
+void dfs(int** matrix, int size, std::vector<Node>& nodes, Node& start);
 
-void printPath(std::vector<Node> &nodes, Node &start, Node &vozlisce);
+void printPath(std::vector<Node>& nodes, Node& start, Node& vozlisce);
 
-void initiateMatrixAndNodes(std::ifstream &inputFile, int **matrix, int size, std::vector<Node> &nodes);
+void initiateMatrixAndNodes(std::ifstream& inputFile, int** matrix, int size, std::vector<Node>& nodes);
 
-#endif //OSNOVEALGORITMOV_DFS_H
+#endif  // OSNOVEALGORITMOV_DFS_H
