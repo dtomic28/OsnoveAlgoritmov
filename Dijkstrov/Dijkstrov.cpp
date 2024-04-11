@@ -7,6 +7,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -71,7 +72,7 @@ std::vector<int> Dijkstrov::getNeigbours(int index)
     std::vector<int> neigbours;
     for (int i = 0; i < matrixSize; i++)
     {
-        if (matrix[index][i] < numeric_limits<int>::max())
+        if (matrix[index][i] < numeric_limits<int>::max() && matrix[index][i] != 0)
         {
             neigbours.push_back(i);
         }
@@ -86,15 +87,48 @@ void Dijkstrov::run(Node& start)
         v.previous = -1;
     }
     start.price = 0;
-    std::vector<Node> queue = nodes;
+    std::vector<Node> queue;
+    queue.push_back(start);
+    vector<int> neighbours;
     while (!queue.empty())
     {
         std::sort(queue.begin(), queue.end());
         Node u = queue[0];
         queue.erase(queue.begin());
-        for (auto& v : getNeigbours(u.index))
+        neighbours = getNeigbours(u.index);
+        for (auto v : neighbours)
         {
-            // if (nodes[v].price >)
+            if (nodes[v].price > u.price + matrix[u.index][v])
+            {
+                nodes[v].price = u.price + matrix[u.index][v];
+                nodes[v].previous = u.index;
+                queue.push_back(nodes[v]);
+            }
+        }
+    }
+}
+
+bool operator==(const Node& n1, const Node& n2)
+{
+    return n1.previous == n2.previous && n1.price == n2.price && n1.index == n2.index;
+}
+
+void Dijkstrov::printPath(Node& start, Node& vozlisce)
+{
+    if (start == vozlisce)
+    {
+        std::cout << "Pot je: " << vozlisce.index;
+    }
+    else
+    {
+        if (vozlisce.previous == -1)
+        {
+            std::cout << "Med " << start.index << " in " << vozlisce.index << " ni poti!" << std::endl;
+        }
+        else
+        {
+            printPath(start, nodes[vozlisce.previous]);
+            std::cout << " -> " << vozlisce.index << " (dolzina = " << vozlisce.price << ")";
         }
     }
 }

@@ -12,22 +12,29 @@ struct Node
     Node(int previous, int price, int status, int index, std::string ime)
         : previous(previous)
         , price(price)
-        , status(status)
         , index(index)
         , name(std::move(ime))
     {
     }
 
+    Node(const Node& node) = default;
+
+    Node()
+        : price(0)
+        , index(-1)
+        , previous(-1)
+    {
+    }
+
     int previous;
     int price;
-    int status;
     int index;
     std::string name;
 
     std::string toString() const
     {
-        return this->name + " - " + "Index: " + std::to_string(this->index) + ", Status: " + std::to_string(this->status) +
-               ", Previous: " + std::to_string(this->previous) + ", length from node s: " + std::to_string(this->price);
+        return this->name + " - " + "Index: " + std::to_string(this->index) +
+               ", Status: " + ", Previous: " + std::to_string(this->previous) + ", length from node s: " + std::to_string(this->price);
     }
 
     bool operator<(const Node& other) const
@@ -51,6 +58,7 @@ public:
     static void printMatrix();
     static void run(Node& start);
     static std::vector<int> getNeigbours(int index);
+    static void printPath(Node& start, Node& vozlisce);
 };
 
 #endif  // OSNOVEALGORITMOV_DIJKSTROV_H
