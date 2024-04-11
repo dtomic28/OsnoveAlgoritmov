@@ -81,19 +81,21 @@ void Kruskal::run()
 
     while (!finished)
     {
-        if (nodeSet[connections[i].p] != nodeSet[connections[i].q] || nodeSet[connections[i].p] == 0 && nodeSet[connections[i].q] == 0)
-        {  // If not case 1
-            if (nodeSet[connections[i].p] != 0 && nodeSet[connections[i].q] != 0)
+        if (nodeSet[connections[i].p] != nodeSet[connections[i].q] ||
+            nodeSet[connections[i].p] == 0 && nodeSet[connections[i].q] == 0)      // Ce ni cikel
+        {                                                                          // If not case 1
+            if (nodeSet[connections[i].p] != 0 && nodeSet[connections[i].q] != 0)  // Ce sta v dveh razlicnih mnozicah
             {
                 result.push_back(connections[i]);
                 joinSet(nodeSet[connections[i].p], nodeSet[connections[i].q]);
             }
-            else if (nodeSet[connections[i].p] != 0 && nodeSet[connections[i].q] == 0)
+            else if (nodeSet[connections[i].p] != 0 && nodeSet[connections[i].q] == 0 ||
+                     nodeSet[connections[i].p] == 0 && nodeSet[connections[i].q] != 0)  // Ce je p v eni mnozici q pa v nobeni
             {
                 result.push_back(connections[i]);
                 nodeSet[connections[i].q] = nodeSet[connections[i].p];
             }
-            else if (nodeSet[connections[i].p] == 0 && nodeSet[connections[i].q] == 0)
+            else if (nodeSet[connections[i].p] == 0 && nodeSet[connections[i].q] == 0)  // Ce noben ni v nobeni mnozici
             {
                 result.push_back(connections[i]);
                 unsigned int newSet = createNewSet();

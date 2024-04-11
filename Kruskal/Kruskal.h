@@ -10,12 +10,13 @@
 
 struct Connection
 {
-    Connection(int p, int q, int price)
+    Connection(int p, int q, int price, int index)
         : p(p)
         , q(q)
-        , price(price){};
+        , price(price)
+        , index(index){};
 
-    int p, q, price;
+    int p, q, price, index;
 
     std::string toString() const
     {

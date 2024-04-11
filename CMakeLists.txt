@@ -7,7 +7,11 @@ add_executable(Quicksort Quicksort/Quicksort.cpp
         Quicksort/QuicksortIMPL.cpp
         Quicksort/Quicksort.h)
 add_executable(DepthFirstSearch DepthFirstSearch/dfs.cpp DepthFirstSearch/dfs.h
-        DepthFirstSearch/dfsIMPL.cpp)
+        DepthFirstSearch/dfsIMPL.cpp
+        Dijkstrov/Dijkstrov.cpp
+        Dijkstrov/Dijkstrov.h
+        Dijkstrov/DijkstrovIMPL.cpp)
 add_executable(Kruskal Kruskal/KruskalIMPL.cpp
         Kruskal/Kruskal.cpp
         Kruskal/Kruskal.h)
+add_executable(Dijkstrov Dijkstrov/Dijkstrov.cpp Dijkstrov/Dijkstrov.h Dijkstrov/DijkstrovIMPL.cpp)

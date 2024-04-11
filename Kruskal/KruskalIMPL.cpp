@@ -34,7 +34,7 @@ int main()
         {
             case 1:
             {
-                ifstream inputFile("../Kruskal/graf2.txt");
+                ifstream inputFile("../Kruskal/graf1.txt");
                 inputFile >> size;
                 inputFile >> connectionSize;
 
