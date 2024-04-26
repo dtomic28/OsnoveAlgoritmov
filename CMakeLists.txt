@@ -15,3 +15,5 @@ add_executable(Kruskal Kruskal/KruskalIMPL.cpp
         Kruskal/Kruskal.cpp
         Kruskal/Kruskal.h)
 add_executable(Dijkstrov Dijkstrov/Dijkstrov.cpp Dijkstrov/Dijkstrov.h Dijkstrov/DijkstrovIMPL.cpp)
+add_executable(FloydWarshallow FloydWarshallow/FloydWarshallow.cpp FloydWarshallow/FloydWarshallow.h
+        FloydWarshallow/FloydWarshallowIMPL.cpp)
