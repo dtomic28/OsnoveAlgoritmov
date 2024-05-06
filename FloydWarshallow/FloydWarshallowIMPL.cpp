@@ -54,7 +54,8 @@ int main()
                 cin >> endIndex;
 
                 FloydWarshallow::printPath(startIndex, endIndex);
-                cout << "Dolzina poti: " << FloydWarshallow::d[startIndex][endIndex] << endl;
+                if (FloydWarshallow::d[startIndex][endIndex] != 1000000)
+                    cout << "Dolzina poti: " << FloydWarshallow::d[startIndex][endIndex] << endl;
                 break;
             }
             case 4:
